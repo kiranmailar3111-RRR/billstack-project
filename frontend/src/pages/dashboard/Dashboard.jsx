@@ -36,11 +36,9 @@ const Dashboard = () => {
 
   const fetchDashboardData = async () => {
     try {
-      const [productsRes, customersRes, invoicesRes] = await Promise.all([
-        api.get("/products"),
-        api.get("/customers"),
-        api.get("/invoices"),
-      ]);
+      const productsRes = await api.get("/products");
+      const customersRes = await api.get("/customers");
+      const invoicesRes = await api.get("/invoices");
 
       setProducts(productsRes.data.data);
       setCustomers(customersRes.data.data);
